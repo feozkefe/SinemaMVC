@@ -1,4 +1,5 @@
 ﻿using Sinema.DAL;
+using Sinema.WebUI.Attribute;
 using Sinema.WebUI.Models;
 using System.Web.Mvc;
 
@@ -8,6 +9,7 @@ namespace Sinema.WebUI.Controllers
     public class SeansController : BaseController
     {
         // GET: Sean
+        [Auth]
         public ActionResult Index()
         {
             var seans = service.SeansService.GetAll();

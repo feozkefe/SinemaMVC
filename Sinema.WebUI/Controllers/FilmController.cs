@@ -1,6 +1,7 @@
 ﻿using Sinema.DAL;
 using System.Web.Mvc;
 using Sinema.WebUI.Models;
+using Sinema.WebUI.Attribute;
 
 namespace Sinema.WebUI.Controllers
 {
@@ -8,6 +9,7 @@ namespace Sinema.WebUI.Controllers
     public class FilmController : BaseController
     {
         // GET: Film
+        [Auth]
         public ActionResult Index()
         {
             var data = service.FilmService.GetAll();

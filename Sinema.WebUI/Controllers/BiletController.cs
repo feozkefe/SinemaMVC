@@ -1,4 +1,5 @@
 ﻿using Sinema.DAL;
+using Sinema.WebUI.Attribute;
 using Sinema.WebUI.Models;
 using System;
 using System.Web.Mvc;
@@ -9,7 +10,7 @@ namespace Sinema.WebUI.Controllers
     public class BiletController : BaseController
     {
 
-
+        [Auth]
         public ActionResult Index()
         {
             var data = service.BiletService.GetAll();

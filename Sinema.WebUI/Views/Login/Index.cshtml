@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,33 +23,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Sinema MVC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Sinema MVC App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/Home/Index">Anasayfa</a>
-                    </li>
-                    <li>
-                        <a href="/Bilet/Index">Bilet İşlemleri</a>
-                    </li>
-                    <li>
-                        <a href="/Film/Index">Filmler </a>
-                    </li>
-                    <li>
-                        <a href="/Seans/Index">Seanslar </a>
-                    </li>
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
         </div>
     </div>
 
     <div class="container body-content">
+
+        <h3>Çalışan Giriş Sayfası</h3>
+        <br />
+
         <div class="row">
             <div class="col-md-12">
-                @RenderBody()
+                <form action="/Login/LoginControl" method="post">
+        <div class="form-group">
+            <label for="kullaniciAdi">Kullanıcı Adı:</label>
+            <input type="text" class="form-control" name="KullaniciAdi" id="kullaniciAdi">
+        </div>
+        <div class="form-group">
+            <label for="Parola">Parola:</label>
+            <input type="password" class="form-control" name="Parola" id="pwd">
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-default">Giriş</button>
+    </form>
             </div>
         </div>
+
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

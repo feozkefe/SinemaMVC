@@ -101,6 +101,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\home-cinema-theatre-header.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -111,10 +112,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attribute\AuthAttribute.cs" />
+    <Compile Include="Attribute\SessionContext.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BiletController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SeansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -146,6 +150,7 @@
     <Content Include="Views\Seans\SeansEkle.cshtml" />
     <Content Include="Views\Seans\SeansGuncelle.cshtml" />
     <Content Include="Views\Bilet\Guncelle.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
