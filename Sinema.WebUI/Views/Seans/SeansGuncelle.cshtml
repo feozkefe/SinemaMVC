@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "SeansGuncelle";
+}
+
+
+@model Sinema.DAL.Seans
+
+<h2>Seans Guncelle</h2>
+<hr />
+
+<div class="row">
+
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="col-md-6">
+        <div class="card">
+            <form class="form-horizontal" method="post" action="/Seans/SeansGuncelle">
+                <div class="card-body">
+                    <h4 class="card-title">Seans Güncelleme Formu</h4><br />
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Film Adı</label>
+                        <div class="col-sm-9">
+                            <input type="time" class="form-control" value="@Model.Saat" required name="Saat" id="fname" placeholder="Seans Saati Giriniz">
+                        </div>
+                    </div>
+                    <input type="hidden" value="@Model.ID" name="ID" />
+                </div>
+                <div role="alert">
+                    @TempData["Error"]
+                </div>
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <div>
+        @Html.ActionLink("Listeye Geri Dön", "Index")
+    </div>
+
+
+</div>
+

@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SinemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bilet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FilmID" Type="Int32" Nullable="false" />
+    <Property Name="SalonID" Type="Int32" Nullable="false" />
+    <Property Name="SeansID" Type="Int32" Nullable="false" />
+    <Property Name="CalisanID" Type="Int32" Nullable="false" />
+    <Property Name="MusteriID" Type="Int32" Nullable="false" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="KoltukNo" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Fiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Calisan" Relationship="Self.FK_Bilet_Calisan" FromRole="Bilet" ToRole="Calisan" />
+    <NavigationProperty Name="Film" Relationship="Self.FK_Bilet_Film" FromRole="Bilet" ToRole="Film" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Bilet_Musteri" FromRole="Bilet" ToRole="Musteri" />
+    <NavigationProperty Name="Salon" Relationship="Self.FK_Bilet_Salon" FromRole="Bilet" ToRole="Salon" />
+    <NavigationProperty Name="Seans" Relationship="Self.FK_Bilet_Seans" FromRole="Bilet" ToRole="Seans" />
+  </EntityType>
+  <EntityType Name="Calisan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TCKN" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DogumTarihi" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_Calisan" FromRole="Calisan" ToRole="Bilet" />
+  </EntityType>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UcBoyutluMu" Type="Boolean" />
+    <Property Name="Sure" Type="Int32" />
+    <Property Name="YerliMi" Type="Boolean" />
+    <Property Name="TurID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_Film" FromRole="Film" ToRole="Bilet" />
+    <NavigationProperty Name="FilmTur" Relationship="Self.FK_Film_FilmTur" FromRole="Film" ToRole="FilmTur" />
+  </EntityType>
+  <EntityType Name="FilmTur">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Film" Relationship="Self.FK_Film_FilmTur" FromRole="FilmTur" ToRole="Film" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_Musteri" FromRole="Musteri" ToRole="Bilet" />
+  </EntityType>
+  <EntityType Name="Salon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kapasitesi" Type="Int32" />
+    <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_Salon" FromRole="Salon" ToRole="Bilet" />
+  </EntityType>
+  <EntityType Name="Seans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Saat" Type="Time" Precision="7" />
+    <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_Seans" FromRole="Seans" ToRole="Bilet" />
+  </EntityType>
+  <Association Name="FK_Bilet_Calisan">
+    <End Role="Calisan" Type="Self.Calisan" Multiplicity="1" />
+    <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calisan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bilet">
+        <PropertyRef Name="CalisanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilet_Film">
+    <End Role="Film" Type="Self.Film" Multiplicity="1" />
+    <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Film">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bilet">
+        <PropertyRef Name="FilmID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilet_Musteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+    <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bilet">
+        <PropertyRef Name="MusteriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilet_Salon">
+    <End Role="Salon" Type="Self.Salon" Multiplicity="1" />
+    <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bilet">
+        <PropertyRef Name="SalonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilet_Seans">
+    <End Role="Seans" Type="Self.Seans" Multiplicity="1" />
+    <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seans">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bilet">
+        <PropertyRef Name="SeansID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Film_FilmTur">
+    <End Role="FilmTur" Type="Self.FilmTur" Multiplicity="1" />
+    <End Role="Film" Type="Self.Film" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FilmTur">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Film">
+        <PropertyRef Name="TurID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SinemaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bilet" EntityType="Self.Bilet" />
+    <EntitySet Name="Calisan" EntityType="Self.Calisan" />
+    <EntitySet Name="Film" EntityType="Self.Film" />
+    <EntitySet Name="FilmTur" EntityType="Self.FilmTur" />
+    <EntitySet Name="Musteri" EntityType="Self.Musteri" />
+    <EntitySet Name="Salon" EntityType="Self.Salon" />
+    <EntitySet Name="Seans" EntityType="Self.Seans" />
+    <AssociationSet Name="FK_Bilet_Calisan" Association="Self.FK_Bilet_Calisan">
+      <End Role="Calisan" EntitySet="Calisan" />
+      <End Role="Bilet" EntitySet="Bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilet_Film" Association="Self.FK_Bilet_Film">
+      <End Role="Film" EntitySet="Film" />
+      <End Role="Bilet" EntitySet="Bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilet_Musteri" Association="Self.FK_Bilet_Musteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Bilet" EntitySet="Bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilet_Salon" Association="Self.FK_Bilet_Salon">
+      <End Role="Salon" EntitySet="Salon" />
+      <End Role="Bilet" EntitySet="Bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilet_Seans" Association="Self.FK_Bilet_Seans">
+      <End Role="Seans" EntitySet="Seans" />
+      <End Role="Bilet" EntitySet="Bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Film_FilmTur" Association="Self.FK_Film_FilmTur">
+      <End Role="FilmTur" EntitySet="FilmTur" />
+      <End Role="Film" EntitySet="Film" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Guncelle";
+}
+
+
+@model Sinema.DAL.Bilet
+
+<h2>Bilet Guncelle</h2>
+<hr />
+
+<div class="row">
+
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="col-md-6">
+        <div class="card">
+            <form class="form-horizontal" method="post" action="/Bilet/Guncelle">
+                <div class="card-body">
+                    <h4 class="card-title">Bilet Güncelleme Formu</h4><br />
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Film ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" value="@Model.FilmID" required name="FilmID" id="FilmID" placeholder="Film ID Giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Salon ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" value="@Model.SalonID" required name="SalonID" id="SalonID" placeholder="Salon ID Giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Seans ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" value="@Model.SeansID" required name="SeansID" id="SeansID" placeholder="Seans ID Giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Seans ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" value="@Model.CalisanID" required name="CalisanID" id="CalisanID" placeholder="Calisan ID Giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Musteri ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" value="@Model.MusteriID" required name="MusteriID" id="MusteriID" placeholder="Musteri ID Giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Tarih</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" value="@Model.Tarih" required name="Tarih" id="Tarih" placeholder="Tarih Giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Koltuk No</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" value="@Model.KoltukNo" required name="KoltukNo" id="KoltukNo" placeholder="Koltuk No Giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Fiyat</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" value="@Model.Fiyat" required name="Fiyat" id="Fiyat" placeholder="Fiyat Giriniz">
+                        </div>
+                    </div>
+                    <input type="hidden" value="@Model.ID" name="ID" />
+                </div>
+                <div role="alert">
+                    @TempData["Error"]
+                </div>
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <div>
+        @Html.ActionLink("Listeye Geri Dön", "Index")
+    </div>
+
+
+</div>
+

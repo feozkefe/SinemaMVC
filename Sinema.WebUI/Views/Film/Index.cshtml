@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model List<Sinema.DAL.Film>
+
+<h2>Film Listesi</h2>
+<hr />
+
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Film Adı</th>
+            <th scope="col">3D Bilgisi</th>
+            <th scope="col">Film Süresi</th>
+            <th scope="col">Yerli/Yabancı</th>
+            <th scope="col">Film Türü</th>
+            <th scope="col" width="150px"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.ID</th>
+                <td>@item.Adi</td>
+                <td>@item.UcBoyutluMu</td>
+                <td>@item.Sure</td>
+                <td>@item.YerliMi</td>
+                <td>@item.FilmTur.Adi</td>
+                <td>
+                    @*<a href="/Film/Sil" class="btn btn-danger">Sil</a>
+                        <a href="/Film/Guncelle" class="btn btn-secondary",new { id=item.ID}>Güncelle</a>*@
+                    @Html.ActionLink("Guncelle", "Guncelle", new { id = item.ID }, new { @class = "btn btn-secondary" })
+                    @Html.ActionLink("Sil", "Sil", new { id = item.ID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<br />
+<a href="/Film/FilmEkle" class="btn btn-primary">Yeni Film Ekle</a>

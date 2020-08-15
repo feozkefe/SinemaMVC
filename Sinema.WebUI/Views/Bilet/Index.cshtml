@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Bilet";
+}
+
+@model List<Sinema.DAL.Bilet>
+
+<h2>Bilet</h2>
+
+
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Film Adı</th>
+            <th scope="col">Salon</th>
+            <th scope="col">Seans</th>
+            <th scope="col">Calisan</th>
+            <th scope="col">Müşteri</th>
+            <th scope="col">Tarih</th>
+            <th scope="col">Koltuk No</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col" width="150px"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item1 in Model)
+        {
+            <tr>
+                <th scope="row">@item1.ID</th>
+                <td>@item1.Film.Adi</td>
+                <td>@item1.Salon.Adi</td>
+                <td>@item1.Seans.Saat</td>
+                <td>@item1.Calisan.Adi @item1.Calisan.Soyadi</td>
+                <td>@item1.Musteri.Adi @item1.Musteri.Soyadi</td>
+                <td>@item1.Tarih</td>
+                <td>@item1.KoltukNo</td>
+                <td>@item1.Fiyat</td>
+                <td>
+                    @*<a href="/Bilet/Sil?id=@item.ID" class="btn btn-danger">Sil</a>
+                    <a href="/Bilet/Guncelle?id=@item.ID" class="btn btn-secondary">Güncelle</a>*@
+                
+                    @Html.ActionLink("Guncelle", "Guncelle", new { id = item1.ID }, new { @class = "btn btn-secondary" })
+                    @Html.ActionLink("Sil", "Sil", new { id = item1.ID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+   
+</table>
+<br />
+<a href="/Bilet/BiletEkle" class="btn btn-primary">Yeni Bilet Satış</a>

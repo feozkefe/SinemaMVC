@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewBag.Title = "BiletEkle";
+}
+
+
+@*<div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form class="form-horizontal" method="post" action="/Bilet/BiletEkle">
+                    <div class="card-body">
+                        <h4 class="card-title">Bilet Formu</h4>
+                        <div class="form-group row">
+                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">Film ID</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" required name="FilmID" id="fname" placeholder="Film ID giriniz">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Salon ID</label>
+                            <div class="col-sm-9">
+                                <input type="number" name="SalonID" class="form-control" id="lname" placeholder="Salon ID giriniz">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Seans ID</label>
+                            <div class="col-sm-9">
+                                <input type="number" name="SeansID" class="form-control" id="lname" placeholder="Seans ID giriniz">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Çalışan ID</label>
+                            <div class="col-sm-9">
+                                <input type="number" name="CalisanID" class="form-control" id="email1" placeholder="Calisan ID giriniz">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Musteri ID</label>
+                            <div class="col-sm-9">
+                                <input type="number" name="MusteriID" class="form-control" id="email1" placeholder="Musteri ID'sini giriniz'">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Tarih</label>
+                            <div class="col-sm-9">
+                                <input type="datetime" name="MusteriID" class="form-control" id="email1" placeholder="Tarih giriniz'">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Koltuk NO</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="MusteriID" class="form-control" id="email1" placeholder="Koltuk No giriniz'">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Fiyat</label>
+                            <div class="col-sm-9">
+                                <input type="number" name="Fiyat" class="form-control" id="email1" placeholder="Fiyat giriniz'">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div role="alert">
+                        @TempData["Error"]
+                    </div>
+                    <div class="border-top">
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>*@
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <form class="form-horizontal" method="post" action="/Bilet/BiletEkle">
+                <div class="card-body">
+                    <h4 class="card-title">Bilet Formu</h4>
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Film ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" required name="FilmID" id="fname" placeholder="Film ID giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Salon ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" name="SalonID" class="form-control" id="lname" placeholder="Salon ID giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Seans ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" name="SeansID" class="form-control" id="lname" placeholder="Seans ID giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Çalışan ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" name="CalisanID" class="form-control" id="email1" placeholder="Calisan ID giriniz">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Musteri ID</label>
+                        <div class="col-sm-9">
+                            <input type="number" name="MusteriID" class="form-control" id="email1" placeholder="Musteri ID'sini giriniz'">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Tarih</label>
+                        <div class="col-sm-9">
+                            <input type="datetime" name="Tarih" class="form-control" id="email1" placeholder="Tarih giriniz'">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Koltuk NO</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="KoltukNo" class="form-control" id="email1" placeholder="Koltuk No giriniz'">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Fiyat</label>
+                        <div class="col-sm-9">
+                            <input type="number" name="Fiyat" class="form-control" id="email1" placeholder="Fiyat giriniz'">
+                        </div>
+                    </div>
+                </div>
+                <div role="alert">
+                    @TempData["Error"]
+                </div>
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
